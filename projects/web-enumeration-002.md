@@ -44,3 +44,20 @@ The scan completed using the DIRB `common.txt` wordlist (4,615 listed entries) a
 ## Next verification
 
 Request `/index.html` with `curl` or a browser to verify its content, then compare it with the homepage. Do not claim further paths exist without evidence.
+
+## Verification completed
+
+The user ran:
+
+```bash
+curl -s http://10.129.167.54:8008/index.html | grep -E '<title>|THM\\{'
+```
+
+Observed output:
+
+```html
+<title>Types and Styles of Coffee</title>
+<span style="font-size: 24px;"><code>THM{SECRET_PAGE_38B9P6}</code></span>
+```
+
+This verifies that the discovered `/index.html` resource contains the same page title and flag previously observed at `/`. It demonstrates use of `curl -s`, a shell pipe, and `grep -E` to extract specific evidence from HTML. **Project 002's introductory Gobuster discovery and verification exercise is complete.**
