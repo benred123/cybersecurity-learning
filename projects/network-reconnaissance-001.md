@@ -170,3 +170,7 @@ THM{SECRET_PAGE_38B9P6}
 4. This was **content discovery**, not exploitation or an authentication bypass. The flag was present in the response available to the client.
 
 **Next:** Submit the flag to the corresponding TryHackMe question and confirm whether it is accepted. The flag has been found but room acceptance has not yet been verified.
+
+## Outcome
+
+**Confirmed by learner:** TryHackMe accepted the discovered flag `THM{SECRET_PAGE_38B9P6}`. The exercise's flag submission is complete.
