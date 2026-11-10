@@ -68,3 +68,30 @@ Nmap done: 1 IP address (1 host up) scanned in 0.29 seconds
 - The AttackBox reported a different OpenSSH Ubuntu package build (`3ubuntu13.20`). A version difference alone is not proof of a vulnerability.
 
 **Next step:** Continue the room's authorised exercises and expand the scan only within the permitted target scope.
+
+## Expanded TCP scan — default 1,000 ports
+
+**Observed:** 10 November 2026 at 15:35 UTC, against the same authorised TryHackMe target.
+
+```bash
+nmap -sT 10.129.167.54
+```
+
+```text
+Host is up (0.00025s latency).
+Not shown: 994 closed tcp ports (conn-refused)
+PORT     STATE SERVICE
+7/tcp    open  echo
+9/tcp    open  discard
+13/tcp   open  daytime
+17/tcp   open  qotd
+22/tcp   open  ssh
+8008/tcp open  http
+Nmap done: 1 IP address (1 host up) scanned in 0.09 seconds
+```
+
+### Interpretation
+
+The scan identified **six open ports** among Nmap's default **1,000 commonly scanned TCP ports**, and 994 closed ports. Ports 7 (echo), 9 (discard), 13 (daytime), 17 (quote of the day), 22 (SSH), and 8008 (commonly HTTP) were reported open. These service labels in a scan without `-sV` are based on conventional port mappings and do not verify the running application. The finding on port 8008 illustrates that a potential web service may use a port other than 80 or 443; confirmation requires further probing.
+
+**Next:** Use `nmap -sV -p 7,9,13,17,22,8008 10.129.167.54` to investigate service identities within the authorised lab scope.
