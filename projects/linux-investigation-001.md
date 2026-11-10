@@ -48,3 +48,27 @@ Understanding identity, group membership and file permissions is foundational fo
 This exercise confirmed how to identify the active user, navigate directories and inspect file permissions. Next: practise `chmod`, `stat`, file content commands and the principle of least privilege using a disposable practice file.
 
 *This write-up records an introductory exercise, not a penetration test or a discovered vulnerability.*
+
+## Follow-up exercise — Changing file permissions
+
+**Status:** Completed, 10 November 2026
+
+Within the same authorised training VM and the practice directory `/tmp/ben-linux-lab`, I changed permissions on the empty file `notes.txt` and checked the result:
+
+```text
+$ chmod 600 notes.txt
+$ ls -l notes.txt
+-rw------- 1 root root 0 Nov 10 15:11 notes.txt
+$ chmod 644 notes.txt
+$ stat -c '%a %U %G %n' notes.txt
+644 root root notes.txt
+```
+
+### Explanation
+
+- `600` grants the **owner** read (4) and write (2), and gives group and others no permissions.
+- `644` grants the owner read/write and grants group and others read only.
+- `ls -l` showed the symbolic permissions after the first change.
+- `stat` confirmed the restored numeric mode, owner, group and filename.
+
+**Security lesson:** Permissions implement access controls, but the exercise ran as UID 0 (`root`), which can normally bypass standard discretionary file permissions. Testing actual access restrictions requires a non-root account in a controlled lab.
