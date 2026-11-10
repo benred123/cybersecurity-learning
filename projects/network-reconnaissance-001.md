@@ -116,3 +116,34 @@ nmap -sV -p 7,9,13,17,22,8008 10.129.167.54
 **Scan duration:** 157.48 seconds. Nmap reported two unrecognised service fingerprints despite receiving data, corresponding to ports 13 and 17. The question marks indicate uncertain identification. Returned text strongly supports Daytime and Quote of the Day functionality, but Nmap did not confidently match those services to known signatures. The HTTP service on port 8008 demonstrates why scanning only 80 and 443 can miss a web server.
 
 **Next investigation:** In the authorised lab, open `http://10.129.167.54:8008/` in the AttackBox browser and inspect the page, or request its HTTP headers with `curl -I http://10.129.167.54:8008/`. Record actual responses before making further claims. A service version alone does not prove a vulnerability.
+
+## HTTP header inspection — Port 8008
+
+**Observed:** 10 November 2026 at 15:56:57 GMT, within the authorised TryHackMe lab.
+
+```bash
+curl -I http://10.129.167.54:8008/
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html
+ETag: "3115179486"
+Last-Modified: Wed, 09 Oct 2024 07:50:58 GMT
+Content-Length: 3039
+Accept-Ranges: bytes
+Date: Tue, 10 Nov 2026 15:56:57 GMT
+Server: lighttpd/1.4.74
+```
+
+### Interpretation
+
+- **200 OK:** The server successfully handled the HTTP HEAD request made by `curl -I`.
+- **Content-Type: text/html:** The resource is identified as HTML.
+- **Content-Length: 3039:** The server reports a 3,039-byte representation; `curl -I` did not download the page body.
+- **ETag / Last-Modified:** Metadata used for cache validation; the server reports a last-modified timestamp of 9 October 2024.
+- **Accept-Ranges: bytes:** The server advertises byte-range request support.
+- **Date:** The server reports its response timestamp.
+- **Server: lighttpd/1.4.74:** Consistent with Nmap's earlier version detection. This is an advertised version, not proof of a vulnerability.
+
+**Next:** Request the page body or inspect the page in the AttackBox browser, and record the actual visible content before making conclusions.
