@@ -43,3 +43,22 @@ Connection: keep-alive
 ## Next step
 
 Turn on **Proxy → Intercept**, refresh the authorised lab webpage in Burp's browser, and verify that Burp pauses the outgoing `GET /` request before forwarding. This step has not yet been confirmed.
+
+## Successful HTTP request modification — confirmed
+
+The learner confirmed that Burp Suite's **Proxy → Intercept** paused the outgoing request to the authorised TryHackMe lab website. They replaced the original browser `User-Agent` header with:
+
+```http
+User-Agent: Ben-Cybersecurity-Lab
+```
+
+They visually confirmed the modified header in Burp before selecting **Forward**, and confirmed the coffee webpage loaded successfully afterwards.
+
+### Outcome and limits
+
+- **Completed:** Capture, edit, and forward a live HTTP request through Burp Suite.
+- **Observed:** The website loaded after the header was changed.
+- **Not established:** Whether the server logged, stored, or otherwise processed the custom `User-Agent` value beyond receiving the forwarded request.
+- **Security lesson:** Client-supplied request headers can be modified; this exercise does not establish a vulnerability.
+
+**Project 003 introductory HTTP interception exercise: complete.**
