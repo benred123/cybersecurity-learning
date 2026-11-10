@@ -147,3 +147,26 @@ Server: lighttpd/1.4.74
 - **Server: lighttpd/1.4.74:** Consistent with Nmap's earlier version detection. This is an advertised version, not proof of a vulnerability.
 
 **Next:** Request the page body or inspect the page in the AttackBox browser, and record the actual visible content before making conclusions.
+
+## Web content inspection and TryHackMe flag discovery
+
+**Observed:** 10 November 2026, authorised room target at `10.129.167.54:8008`.
+
+```bash
+curl http://10.129.167.54:8008/
+```
+
+The HTTP response body contained an HTML document titled **Types and Styles of Coffee**. Near the beginning of the `<body>`, the page displayed a heading `Flag` and a `<code>` element containing:
+
+```text
+THM{SECRET_PAGE_38B9P6}
+```
+
+### What this demonstrates
+
+1. Nmap identified an HTTP service on nonstandard port **8008** even though ports 80 and 443 were closed.
+2. `curl -I` inspected HTTP response headers, while `curl` without `-I` retrieved the HTML body.
+3. Reading the returned HTML revealed the training-room flag embedded directly in page content.
+4. This was **content discovery**, not exploitation or an authentication bypass. The flag was present in the response available to the client.
+
+**Next:** Submit the flag to the corresponding TryHackMe question and confirm whether it is accepted. The flag has been found but room acceptance has not yet been verified.
