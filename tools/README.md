@@ -5,7 +5,7 @@ These are tools to explore in **my own systems or authorised labs**; listing the
 | Tool | Purpose | Progress |
 | --- | --- | --- |
 | Linux terminal | Navigation and system administration | Learning |
-| Nmap | Network discovery | Planned |
+| Nmap | Network discovery | Learning |
 | Wireshark | Packet analysis | Planned |
 | Burp Suite Community | Web testing proxy | Planned |
 | Flipper Zero | Hardware protocol exploration | Exploring |
