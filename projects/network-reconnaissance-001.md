@@ -37,3 +37,34 @@ nmap -sV -p 22,80,443 10.129.64.178
 
 ## Next step
 Deploy the room's designated target, confirm its IP in the TryHackMe interface, and repeat a scoped scan against that authorised target.
+
+## Follow-up: Scanning the designated remote TryHackMe target
+
+**Status:** Completed, 10 November 2026 at 15:34 UTC
+
+The designated room target was `10.129.167.54`, different from the AttackBox (`10.129.64.178`). The following command was run within the authorised training environment:
+
+```bash
+nmap -sT -sV -p 22,80,443 10.129.167.54
+```
+
+### Actual output (relevant lines)
+
+```text
+Host is up (0.00067s latency).
+PORT    STATE  SERVICE VERSION
+22/tcp  open   ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.5 (Ubuntu Linux; protocol 2.0)
+80/tcp  closed http
+443/tcp closed https
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+Nmap done: 1 IP address (1 host up) scanned in 0.29 seconds
+```
+
+### Findings and interpretation
+
+- **22/tcp:** Open, SSH service identified as OpenSSH 9.6p1, Ubuntu package 3ubuntu13.5.
+- **80/tcp and 443/tcp:** Closed during this scan.
+- Only the three explicitly specified TCP ports were checked; other ports and UDP services were not assessed.
+- The AttackBox reported a different OpenSSH Ubuntu package build (`3ubuntu13.20`). A version difference alone is not proof of a vulnerability.
+
+**Next step:** Continue the room's authorised exercises and expand the scan only within the permitted target scope.
