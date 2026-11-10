@@ -95,3 +95,24 @@ Nmap done: 1 IP address (1 host up) scanned in 0.09 seconds
 The scan identified **six open ports** among Nmap's default **1,000 commonly scanned TCP ports**, and 994 closed ports. Ports 7 (echo), 9 (discard), 13 (daytime), 17 (quote of the day), 22 (SSH), and 8008 (commonly HTTP) were reported open. These service labels in a scan without `-sV` are based on conventional port mappings and do not verify the running application. The finding on port 8008 illustrates that a potential web service may use a port other than 80 or 443; confirmation requires further probing.
 
 **Next:** Use `nmap -sV -p 7,9,13,17,22,8008 10.129.167.54` to investigate service identities within the authorised lab scope.
+
+## Service detection on all six discovered ports
+
+**Observed:** 10 November 2026 at 15:36 UTC on the authorised TryHackMe target.
+
+```bash
+nmap -sV -p 7,9,13,17,22,8008 10.129.167.54
+```
+
+| Port | Nmap service | Version / evidence |
+| --- | --- | --- |
+| 7/tcp | echo | No version identified |
+| 9/tcp | discard? | Identification uncertain |
+| 13/tcp | daytime? | Returned UTC date/time strings |
+| 17/tcp | qotd? | Returned quotation text |
+| 22/tcp | ssh | OpenSSH 9.6p1 Ubuntu 3ubuntu13.5 |
+| 8008/tcp | http | lighttpd 1.4.74 |
+
+**Scan duration:** 157.48 seconds. Nmap reported two unrecognised service fingerprints despite receiving data, corresponding to ports 13 and 17. The question marks indicate uncertain identification. Returned text strongly supports Daytime and Quote of the Day functionality, but Nmap did not confidently match those services to known signatures. The HTTP service on port 8008 demonstrates why scanning only 80 and 443 can miss a web server.
+
+**Next investigation:** In the authorised lab, open `http://10.129.167.54:8008/` in the AttackBox browser and inspect the page, or request its HTTP headers with `curl -I http://10.129.167.54:8008/`. Record actual responses before making further claims. A service version alone does not prove a vulnerability.
