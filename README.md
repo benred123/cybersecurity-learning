@@ -1,2 +1,26 @@
-# cybersecurity-learning
-My cybersecurity learning journey, practical labs, technical notes and projects.
+# Cybersecurity Learning 🔐
+
+Hi, I'm **Ben** — a UK-based professional transitioning from quantity surveying into cybersecurity. This repository documents my ongoing technical learning, practical exercises and projects.
+
+## Focus areas
+
+| Area | What's here |
+| --- | --- |
+| [Linux](linux/) | Command-line fundamentals and practice |
+| [Networking](networking/) | Protocols, addressing and troubleshooting |
+| [Security fundamentals](security-fundamentals/) | Core security concepts and defensive thinking |
+| [Tools](tools/) | Notes on tools I'm learning to use |
+| [Projects](projects/) | Practical work, evidence and reflections |
+
+## Current learning
+- TryHackMe: introductory offensive and defensive security
+- pwn.college: introductory Linux exercises
+- Exploring hardware security with a Flipper Zero
+
+## How I document progress
+I distinguish **planned**, **in progress**, and **completed** work. Notes are written in my own words after practice; projects include objectives, scope, evidence and lessons learned. All security testing is limited to systems I own or am authorised to test.
+
+## Career direction
+I'm working toward an entry-level cybersecurity role, with particular interests in security operations, ethical hacking and digital forensics.
+
+[GitHub profile](https://github.com/benred123)
