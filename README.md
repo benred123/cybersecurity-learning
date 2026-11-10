@@ -1,6 +1,6 @@
 # Cybersecurity Learning 🔐
 
-Hi, I'm **Ben** — a UK-based professional transitioning from quantity surveying into cybersecurity. This repository documents my ongoing technical learning, practical exercises and projects.
+Hi, I'm **Ben** — a UK-based professional transitioning into cybersecurity. This repository documents my ongoing technical learning, practical exercises and projects.
 
 ## Focus areas
 
