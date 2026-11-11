@@ -12,6 +12,9 @@ Hi, I'm **Ben** — a UK-based professional transitioning into cybersecurity. Th
 | [Tools](tools/) | Notes on tools I'm learning to use |
 | [Projects](projects/) | Practical work, evidence and reflections |
 
+## Completed practical labs
+- [PortSwigger SQL injection: hidden data and UNION column count (11 Nov 2026)](projects/2026-11-11-portswigger-sql-injection-labs.md) — **2 labs solved**, including Burp Suite Repeater practice.
+
 ## Current learning
 - TryHackMe: introductory offensive and defensive security
 - pwn.college: introductory Linux exercises
