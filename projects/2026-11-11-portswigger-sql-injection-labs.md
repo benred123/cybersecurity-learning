@@ -3,7 +3,7 @@
 **Date:** 11 November 2026  
 **Platform:** PortSwigger Web Security Academy  
 **Environment:** Deliberately vulnerable training labs, accessed using a TryHackMe AttackBox and Burp Suite Community Edition  
-**Status:** 2 labs completed
+**Status:** 3 labs completed
 
 > All testing was conducted against authorised educational lab instances. These notes intentionally exclude session cookies and unique lab hostnames.
 
@@ -56,6 +56,24 @@ PortSwigger then confirmed the lab was **solved**.
 
 A UNION combines the results of SELECT queries when their column counts match and corresponding data types are compatible. `NULL` is useful when probing column counts because it is compatible with many SQL column types. HTTP 200 alone does not guarantee that a lab's completion condition has been met.
 
+## Lab 3 — SQL injection UNION attack, finding a column containing text
+
+**Objective:** Find a column accepting text and display the lab's assigned string.
+
+### Testing in Burp Repeater
+
+| Test | Result |
+| --- | --- |
+| `' UNION SELECT NULL,NULL,NULL--` | 200 OK |
+| `' UNION SELECT 'hello',NULL,NULL--` | 500 error |
+| `' UNION SELECT NULL,'hello',NULL--` | 200 OK; `hello` found in raw HTTP response |
+
+I replaced `hello` in column two with the lab's exact assigned string and PortSwigger marked the lab solved.
+
+### Lessons
+
+The UNION queries must have matching column counts and compatible data types. Test each column with a string while leaving the others NULL. Inspect raw HTTP responses, not just rendered pages. HTTP 200 alone does not prove a lab is solved.
+
 ## Skills practised
 
 - HTTP query parameters and request/response inspection
@@ -66,7 +84,7 @@ A UNION combines the results of SELECT queries when their column counts match an
 
 ## Next planned exercise
 
-PortSwigger: **SQL injection UNION attack, finding a column containing text** — not yet completed.
+Next: another authorised PortSwigger web security lab.
 
 ## Reflection
 
