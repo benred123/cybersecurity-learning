@@ -13,6 +13,7 @@ Hi, I'm **Ben** — a UK-based professional transitioning into cybersecurity. Th
 | [Projects](projects/) | Practical work, evidence and reflections |
 
 ## Completed practical labs
+- [TryHackMe RootMe (11 Nov 2026)](projects/2026-11-11-tryhackme-rootme.md) — **room completed with substantial guidance**; web enumeration, upload validation bypass, command execution and SUID privilege escalation.
 - [PortSwigger SQL injection: hidden data and UNION attacks (11 Nov 2026)](projects/2026-11-11-portswigger-sql-injection-labs.md) — **3 labs solved**, including Burp Suite Repeater, UNION column-count testing and finding text-compatible columns.
 
 ## Current learning
